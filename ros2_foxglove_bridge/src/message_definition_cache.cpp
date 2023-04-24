@@ -1,6 +1,6 @@
 #include "foxglove_bridge/message_definition_cache.hpp"
 
-#include <filesystem>
+#include <experimental/filesystem>
 #include <fstream>
 #include <optional>
 #include <regex>
@@ -198,7 +198,7 @@ const MessageSpec& MessageDefinitionCache::load_message_spec(
   // Find the first line that ends with the filename we're looking for
   const auto lines = split_string(index_contents);
   const auto it = std::find_if(lines.begin(), lines.end(), [&filename](const std::string& line) {
-    std::filesystem::path filePath(line);
+    std::experimental::filesystem::path filePath(line);
     return filePath.filename() == filename;
   });
   if (it == lines.end()) {
@@ -206,7 +206,7 @@ const MessageSpec& MessageDefinitionCache::load_message_spec(
   }
 
   // Read the file
-  const std::string full_path = share_dir + std::filesystem::path::preferred_separator + *it;
+  const std::string full_path = share_dir + std::experimental::filesystem::path::preferred_separator + *it;
   std::ifstream file{full_path};
   if (!file.good()) {
     throw DefinitionNotFoundError(definition_identifier.package_resource_name);

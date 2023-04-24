@@ -11,5 +11,11 @@
     "build/": true,
     "install/": true,
     "log/": true
-  }
+  },
+  "ros.distro": "melodic",
+  "python.autoComplete.extraPaths": [
+    "/home/ghost/ros2_ws/install/ghost_runner/lib/python3.6/site-packages",
+    "/home/ghost/current_ros2/lib/python3.6/site-packages",
+    "/opt/ros/melodic/lib/python2.7/dist-packages"
+  ]
 }

@@ -18,9 +18,9 @@ macro(enable_strict_compiler_warnings target)
   if (MSVC)
     target_compile_options(${target} PRIVATE /WX /W4)
   elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    target_compile_options(${target} PRIVATE -Wall -Wextra -Wpedantic -Werror -Wold-style-cast -Wfloat-equal -Wmost -Wunused-exception-parameter)
+    target_compile_options(${target} PRIVATE -Wall -Wextra -Werror -Wpedantic -Wold-style-cast -Wfloat-equal -Wmost -Wunused-exception-parameter)
   else()
-    target_compile_options(${target} PRIVATE -Wall -Wextra -Wpedantic -Werror -Wold-style-cast -Wfloat-equal)
+    target_compile_options(${target} PRIVATE -Wall -Wextra -Werror -Wpedantic -Wold-style-cast -Wfloat-equal)
   endif()
 endmacro()
 
@@ -75,8 +75,10 @@ target_link_libraries(foxglove_bridge_base
   OpenSSL::Crypto
   OpenSSL::SSL
   ZLIB::ZLIB
+  stdc++fs
   ${CMAKE_THREAD_LIBS_INIT}
 )
+
 if(nlohmann_json_FOUND)
   target_link_libraries(foxglove_bridge_base nlohmann_json::nlohmann_json)
 else()
